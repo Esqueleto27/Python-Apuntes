@@ -1,8 +1,21 @@
-# Para prevenir posibles errores
+# ---------------------------------------------
+# EJEMPLO BÁSICO DE MANEJO DE ERRORES
+# ---------------------------------------------
+# try-except para capturar posibles errores al convertir una entrada a entero
+# ---------------------------------------------
 
 try:
-    n1 = int(input("Ingre su primer numero: "))
+    # Solicitamos un número al usuario
+    n1 = int(input("Ingrese su primer número: "))
 
-# Vamos a ingresar a esta parte del coidgo siempre que ocurra un error arriba
+# Capturamos cualquier error que ocurra en el bloque try
 except:
-    print("Ocurrio un error")
+    # ❌ No se recomienda usar except sin tipo de error
+    # porque captura TODO tipo de error, incluso errores graves
+    print("❌ Ocurrió un error al ingresar el número.")
+
+# ---------------------------------------------
+# NOTA IMPORTANTE:
+# Siempre que sea posible, especifica el tipo de excepción:
+# ejemplo: except ValueError, except ZeroDivisionError, etc.
+# ---------------------------------------------
