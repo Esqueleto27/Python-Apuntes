@@ -5,7 +5,11 @@ from pathlib import Path
 from time import ctime
 
 # Crea un objeto Path que representa la ruta del archivo
-archivo = Path("09-archivos/archivo-prueba.txt")
+archivo = Path("09-Gestion de archivos/archivo-prueba.txt")
+
+# Para que me lea el archivo (lo que contiene el archivo)
+texto = archivo.read_text()
+print(texto)
 
 # Dentro de los métodos que tiene archivo existen:
 
