@@ -1,25 +1,37 @@
-# Instrucciones para crear una tabla dentro de SQLite
-# No olvidar importar SQLite3
-import sqlite3
+# =============================================
+# Crear una Tabla en SQLite con Python
+# =============================================
 
-# Creamos la conexion en donde nos encontramos (archivo)
+# 🧠 Recordatorio: SQLite viene incluido en Python, así que no necesitas instalar nada.
+import sqlite3  # 🔁 Importamos el módulo para trabajar con SQLite
+
+# 🔌 PASO 1: Conectarse (o crear) a la base de datos
+# El archivo 'app.db' está en la carpeta '10-SQLite'.
+# Si no existe, lo crea automáticamente.
 con = sqlite3.connect("10-SQLite/app.db")
 
-# Para generar consultas debemos generar una variable
-# Para nostros realizar consultas a nuestra base de datos, vamos a necesitar crear un objeto llamado cursor que se crea en apartir del objeto de conexion
-# El objeto de cursor va a funcionar como intermediario entre la libreria de sqlite3 y nosotros
+# 🎯 PASO 2: Crear un cursor
+# Un cursor es como un intermediario que permite ejecutar comandos SQL en la base de datos.
 cursor = con.cursor()
 
-
-# Aqui vamos a ejecutar un consulta y siempre lo hacemos con "execute"
+# 🛠️ PASO 3: Ejecutar una consulta SQL
+# Usamos el método 'execute' para enviar instrucciones SQL.
+# En este caso: creamos una tabla llamada 'usuarios' si no existe aún.
+# La tabla tendrá:
+# - una columna 'id' de tipo INTEGER, que será clave primaria (primary key),
+# - una columna 'nombre' de tipo VARCHAR de máximo 50 caracteres.
 cursor.execute(
     """
-CREATE TABLE if not exists usuarios(id INTEGER primary key, nombre VARCHAR(50))
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id INTEGER PRIMARY KEY,
+        nombre VARCHAR(50)
+    )
 """
 )
 
-# Aqui comprometemos los cambios, sin eso la consuta no puede ser posible
+# 💾 PASO 4: Confirmar los cambios
+# 'commit()' guarda todos los cambios realizados durante la conexión.
 con.commit()
 
-# Simpre cerramos
+# ❌ PASO 5: Cerrar la conexión
 con.close()
